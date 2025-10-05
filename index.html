@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manav Gandass Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+      }
+      body {
+        margin: 0;
+        font-family: "Manrope", sans-serif;
+        background: #1a1c1a;
+        color: #dcdcdc;
+      }
+      a {
+        text-decoration: none;
+      }
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(34, 37, 34, 0.95);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+        z-index: 1000;
+        border-bottom: 1px solid #444;
+      }
+      header .logo {
+        display: none;
+      }
+      nav ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      nav a {
+        color: #bfcfc1;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+      nav a:hover {
+        color: #7bbf7b;
+      }
+      main {
+        padding-top: 120px;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+      .hero {
+        text-align: center;
+        padding: 4rem 1rem;
+        background: linear-gradient(135deg, #222724, #2e332e);
+      }
+      .hero h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        color: #7bbf7b;
+      }
+      .hero h2 {
+        font-weight: 400;
+        color: #c0d0c0;
+        font-size: clamp(1rem, 2.5vw, 1.5rem);
+        line-height: 1.6;
+        margin-top: 1rem;
+      }
+      .hero .cta {
+        display: inline-block;
+        margin-top: 2rem;
+        padding: 12px 28px;
+        border-radius: 50px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #4e8b4e, #7bbf7b);
+        color: #1a1c1a;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .hero .cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5),
+          0 0 20px rgba(123, 191, 123, 0.5);
+      }
+      section {
+        margin-bottom: 4rem;
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+      section:nth-child(even) {
+        background: rgba(28, 34, 28, 0.9);
+      }
+      section:nth-child(odd) {
+        background: rgba(34, 40, 34, 0.9);
+      }
+      h2.section-title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: #7bbf7b;
+      }
+      h3.section-subtitle {
+        color: #a0c8a0;
+        margin-bottom: 3rem;
+      }
+      #about .about-text {
+        max-width: 700px;
+        margin: auto;
+        background: rgba(55, 75, 55, 0.2);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      #about .about-text:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2),
+          0 0 15px rgba(123, 191, 123, 0.4);
+      }
+      #about .about-text p {
+        margin-bottom: 1rem;
+        font-size: 1.15rem;
+        color: #c0d0c0;
+        line-height: 1.7;
+      }
+      #about .about-text p strong {
+        color: #7bbf7b;
+      }
+      .skills-grid,
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        justify-items: center;
+      }
+      .projects-grid .project:nth-child(4),
+      .projects-grid .project:nth-child(5) {
+        grid-column: auto;
+      }
+      .skill,
+      .project {
+        background: rgba(55, 75, 55, 0.2);
+        padding: 1.5rem;
+        border-radius: 12px;
+        cursor: default;
+        transition: transform 0.2s, box-shadow 0.2s;
+        font-size: 1.4rem;
+        width: 220px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #7bbf7b;
+      }
+      .skill:hover,
+      .project:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 15px rgba(123, 191, 123, 0.4);
+      }
+      .skill label,
+      .project label {
+        display: block;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #7bbf7b;
+        margin-bottom: 0.5rem;
+      }
+      #contact .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      #contact input,
+      #contact textarea {
+        padding: 0.8rem;
+        border-radius: 10px;
+        border: none;
+        background: rgba(50, 60, 50, 0.4);
+        color: #dcdcdc;
+        transition: background-color 0.3s; /* Added transition */
+      }
+      #contact input:hover,
+      #contact textarea:hover {
+        /* Added hover effect */
+        background: rgba(50, 60, 50, 0.6);
+      }
+      #contact button {
+        padding: 0.8rem;
+        border-radius: 10px;
+        border: none;
+        background: rgba(55, 75, 55, 0.8);
+        font-weight: 600;
+        cursor: pointer;
+        color: #1a1c1a;
+        transition: background-color 0.3s; /* Added transition */
+      }
+      #contact button:hover {
+        background: #7bbf7b;
+      }
+      footer {
+        text-align: center;
+        padding: 3rem 1rem;
+        border-top: 1px solid #444;
+      }
+      footer .socials {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      footer a {
+        color: #a0c8a0;
+        transition: 0.3s;
+      }
+      footer a:hover {
+        color: #7bbf7b;
+        transform: translateY(-3px);
+      }
+      footer i {
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <h1>Hello, I'm Manav Gandass 🌿</h1>
+        <h2>
+          A passionate web & Python developer 💻🍂<br />
+          I enjoy building interactive projects, learning new tools,<br />
+          and solving challenges daily! 🌱
+        </h2>
+        <a href="#projects" class="cta">See My Work</a>
+      </section>
+
+      <section id="about">
+        <h2 class="section-title">About Me 🌾</h2>
+        <h3 class="section-subtitle">
+          A brief introduction to who I am and what I do
+        </h3>
+        <div class="about-text">
+          <p>
+            I am <strong>Manav Gandass</strong>, a beginner web and Python
+            developer at Scaler School of Technology.
+          </p>
+          <p>
+            I enjoy exploring new technologies, solving coding challenges, and
+            building small projects to enhance my skills.
+          </p>
+          <p>
+            My goal is to grow into a proficient software developer, one project
+            at a time! 🌱
+          </p>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2 class="section-title">My Skills 🌿</h2>
+        <div class="skills-grid">
+          <div class="skill"><label>🌐 HTML5</label></div>
+          <div class="skill"><label>🎨 CSS3</label></div>
+          <div class="skill"><label>🐍 Python</label></div>
+          <div class="skill"><label>✨ JavaScript</label></div>
+          <div class="skill"><label>⚡ React</label></div>
+          <div class="skill"><label>🛠️ Git</label></div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">My Projects 🌾</h2>
+        <div class="projects-grid">
+          <div class="project">
+            <label>🌟 Personal Portfolio Website</label>
+          </div>
+          <div class="project"><label>🌤️ Weather Dashboard</label></div>
+          <div class="project"><label>📝 Interactive Survey Form</label></div>
+          <div class="project"><label>🍲 Recipe Page Layout</label></div>
+          <div class="project"><label>🛠️ Task Manager App</label></div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">Contact Me ✉️</h2>
+        <div class="contact-form">
+          <input type="text" placeholder="Your Name" />
+          <input type="email" placeholder="Your Email" />
+          <textarea
+            rows="5"
+            placeholder="Write your message here..."
+          ></textarea>
+          <button>Send Message</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="socials">
+        <a href="https://github.com/Manav-Gandass" target="_blank"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/manav-gandass-482b19302/"
+          target="_blank"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+      </div>
+    </footer>
+  </body>
+</html>
